@@ -2,6 +2,7 @@ export const refs = {
   home: {
     formEl: document.querySelector('#search-form'),
     gallery: document.querySelector('.gallery'),
+    select: document.querySelector('.genre'),
   },
   library: {
     btnQueue: document.querySelector('.btn--queue'),
@@ -46,4 +47,20 @@ export const refs = {
     upcomingBtn: document.querySelector('.upcoming-btn'),
     searchBtnContainer: document.querySelector('.search-btn'),
   },
+  auth: {
+    backdropAuthModal: document.querySelector('.auth__modal-backdrop'),
+    authContainer: document.querySelector('.auth-container'),
+    formWrapperLogin: document.querySelector('#wrapper-login'),
+    formWrapperSignup: document.querySelector('#wrapper-signup'),
+    formReg: document.querySelector('.form-signup'),
+    formLog: document.querySelector('.form-signin'),
+    loginBtn: document.querySelector('.btn-login'),
+    signUpLink: document.querySelector('.link-to-signup'),
+    signInLink: document.querySelector('.link-to-signin'),
+    modalSinInError: document.querySelector('.signin-modal__error'),
+    modalSinUpError: document.querySelector('.signup-modal__error'),
+    logIn: document.querySelector('.js-login'),
+    logOut: document.querySelector('.js-logout'),
+   
+  }
 };

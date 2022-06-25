@@ -1,0 +1,30 @@
+<div class="auth__modal-backdrop is-hidden">
+    <div class="auth-container">
+  <div class="form-wrapper" id="wrapper-login">
+    <div class="content-wrapper" id="content-signin">
+        <p class="form-greeting">Hello!</p>
+        <form class="form-login form-signin" name="checkboxlog" checked>
+          <input type="email" name="email" placeholder="Email" class="input-email" required/>
+            <input type="password" name="password" placeholder="Password" class="input-password" required/>
+            <button type="submit" class="btn-login">LOGIN</button>
+        </form>
+        <p class="auth-form-text">No account? <a class='link-to-signup' href="#wrapper-signup">Sign up</a></p>
+        <div class="signin-modal__error"></div>
+      </div>
+  </div>
+  <div class="form-wrapper visually-hidden" id="wrapper-signup">
+    <div class="content-wrapper" id="content-signup">
+        <p class="form-greeting">Join us!</p>
+        <form class="form-login form-signup">
+            <input type="email" name="email" placeholder="Email" class="input-email" required/>
+            <input type="text" name="username" placeholder="Username" class="input-username" />
+            <input type="password" name="password" placeholder="Password" class="input-password" required/>
+            <button type="submit" class="btn-signup">SIGN UP</button>
+        </form>
+        <p class="auth-form-text">Got account? <a class='link-to-signin' href="#wrapper-login">Sign in</a></p>
+        <div class="signup-modal__error"></div>
+      </div>
+  </div>
+  </div>
+  </div>
+  

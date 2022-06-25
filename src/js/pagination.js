@@ -4,6 +4,7 @@ import { refs } from './refs/refs';
 import { getFromStorage } from '../js/localStorage/storage';
 import { renderTopRated } from './render/renderTopRated';
 import { renderUpComing } from './render/renderUpComing';
+import {renderByGenre} from './render/renderbyGenre'
 
 const {
   pagination: { paginationList, input, libraryGallery },
@@ -11,23 +12,28 @@ const {
 } = refs;
 let currentPage = 1;
 function renderCollection(currentPage) {
+  if(input?.value || refs.home.select.value !== 'Choose genre'){
+    if (refs.home.select.value !== 'Choose genre') {
+   renderByGenre(currentPage);
+   return; 
+  };
   if (input.value.length) {
     requestForMovie(currentPage);
-    return;
-  } else {
+    return; 
+  };} else {
     if (refs.filter.popularBtn.classList.contains('btn-tab-active')) {
       requestForPage(currentPage);
-      return;
+     return; 
     }
     if (refs.filter.topRatedBtn.classList.contains('btn-tab-active')) {
-      renderTopRated(currentPage);
-      return;
-    }
+     renderTopRated(currentPage);
+      return; 
+    } 
     if (refs.filter.upcomingBtn.classList.contains('btn-tab-active')) {
-      renderUpComing(currentPage);
-      return;
+     renderUpComing(currentPage);
+     return; 
     }
-  }
+    }
 }
 
 function renderSpan(value) {
@@ -82,9 +88,14 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
 
 function onPaginationBtnClick(event) {
   gallery.innerHTML = '';
+if(input?.value || refs.home.select.value !== 'Choose genre'){
   if (input?.value) {
     currentPage = Number(getFromStorage('active-search'));
-  } else {
+  } 
+  if (refs.home.select.value.length !== 'Choose genre') {
+    currentPage = Number(getFromStorage('select'));
+  }}
+  else {
     if (refs.filter.popularBtn.classList.contains('btn-tab-active')) {
       currentPage = Number(getFromStorage('active-popular'));
     }

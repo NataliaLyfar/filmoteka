@@ -1,8 +1,5 @@
 .header-library-bgi {
   height: 230px;
-  @media screen and (min-width: $tablet) {
-      height: 220px;
-  }
 
   @include bgi('../images/header-library/header-background-image-mobile.webp');
     @media (min-device-pixel-ratio: 2),
@@ -30,28 +27,10 @@
   }
 }
 
-.header-library-container {
-  margin: 0 auto;
-  padding: 0 20px;
-
-  @media screen and (max-width: 767px) {
-    width: $mobile;
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: $tablet;
-    padding: 0 32px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: $desktop;
-    padding: 0 71px;
-  }
-}
-
 .header-buttons-list {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .header-button {
