@@ -7,16 +7,24 @@
         </svg>
         <span class="logo-name">Filmoteka</span>
       </a>
-      <ul class="pages">
-        <li class="page">
-          <a href="/src/index.html" class="page-link page-link--current-page"
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="/src/index.html" class="nav__link page-link--current-page"
             >home</a>
         </li>
-        <li class="page">
-          <a href="/src/library.html" class="page-link js-library">my library</a>
+        <li class="nav-item">
+          <a href="/src/library.html" class="nav__link js-library">my library</a>
         </li>
       </ul>
     </nav>
+    <ul class="auth">
+      <li class="js-login" id="login">
+        <a href="" class="log__link"> log in</a>
+      </li>
+      <li class="js-logout is-hidden" id="logOut">
+        <a href="" class="log__link">log out</a>
+      </li>
+    </ul>
     <form class="search-form" id="search-form">
       <input
         type="text"

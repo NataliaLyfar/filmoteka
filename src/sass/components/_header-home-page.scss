@@ -1,9 +1,6 @@
 .header-home-bgi {
   height: 230px;
-  @media screen and (min-width: $tablet) {
-    height: 215px;
-  }
-
+ 
   @include bgi('../images/header-home-page/header-bg-main-mobile.jpg');
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -33,7 +30,8 @@
 .search-form {
   display: flex;
   align-items: center;
-  margin: 0 auto;
+ 
+  margin: 0 auto 25px;
   max-width: auto;
   border-bottom: 1px solid $secondary-color;
   @media screen and (min-width: $mobile) {
@@ -74,3 +72,4 @@
     color: $accent-color;
   }
 }
+

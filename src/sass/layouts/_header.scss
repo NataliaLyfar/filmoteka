@@ -1,12 +1,12 @@
 .overlay {
   padding:  40px 0;
-  background-color: aqua;
+ 
 }
 
 .navigation {
-  margin-bottom: 54px;
+  margin-bottom: 5px;
   @media screen and (min-width: $tablet) {
-    margin-bottom: 40px;
+    margin-bottom: 5px;
   }
   display: flex;
   justify-content: space-between;
@@ -36,14 +36,20 @@
     }
 }
 
-.pages {
+.nav-list {
   display: flex;
 
-  .page:not(:last-child) {
+  .nav-item:not(:last-child) {
+    @media screen and (min-width: $mobile){
+      margin-right: 20px;
+    }
+    @media screen and (max-width: $tablet){
+      margin-right: 30px;
+    }
       margin-right: 40px;
     }
 
-  .page-link {
+  .nav__link {
     font-style: normal;
     @include font(500, 12px, 1.17);
     color: $secondary-color;
@@ -69,5 +75,21 @@
       width: 100%;
       background-color: $accent-color;
     }
+  }
+}
+.auth {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+.log__link {
+  font-style: normal;
+  @include font(500, 12px, 1.17);
+  color: $secondary-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover,
+  &:focus {
+      color: $accent-color;
   }
 }
