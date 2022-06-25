@@ -5,6 +5,7 @@ import {
     updateInUser,
     user,
     signOutUser,
+    logInByGoogle,
   } from './firebase/auth-service.js';
   import {refs} from './refs/refs.js';
   import {hideLoader, showLoader} from './loader.js';
@@ -83,3 +84,11 @@ function closeAuthModalByClickOnBack (e) {
     refs.auth.logOut.classList.add('is-hidden');
     refs.auth.logIn.classList.remove('is-hidden');
   });
+refs.auth.googleBtn.addEventListener('click', e => {
+  e.preventDefault();
+    hideLoader();
+    logInByGoogle();
+    refs.auth.logOut.classList.remove('is-hidden');
+    refs.auth.logIn.classList.add('is-hidden');
+    showLoader();
+})

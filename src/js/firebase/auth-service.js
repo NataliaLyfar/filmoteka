@@ -6,6 +6,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithRedirect,
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -59,7 +61,11 @@ export function signInUser(email, password) {
       setTimeout(()=>signInErrorTextRender(errorMessage), 500);
     });
 }
-
+export function logInByGoogle() {
+  const provider = new GoogleAuthProvider(app);
+  signInWithRedirect(auth, provider);
+  closeAuthModal();
+}
 export async function AuthState(user) {
   return await onAuthStateChanged(auth, user => {
     if (user) {
@@ -120,3 +126,4 @@ function signUpErrorRender(errorMessage) {
   }
   refs.auth.modalSinUpError.innerHTML = `<p class="modal__error-text">${errorText}</p>`;
 }
+
