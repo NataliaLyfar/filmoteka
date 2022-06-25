@@ -3,6 +3,17 @@
   <div class="form-wrapper" id="wrapper-login">
     <div class="content-wrapper" id="content-signin">
         <p class="form-greeting">Hello!</p>
+        <div class="social">
+          <ul class="list social__network">
+            <li class="social__block" id="google-login">
+              <button id="googleBtn" class="social__link">
+                <svg class="social__svg" width="20" height="20">
+                  <use href="./images/icons.svg#icon-google-logo"></use>
+                </svg>
+              </button>
+            </li>          
+          </ul>
+        </div>
         <form class="form-login form-signin" name="checkboxlog" checked>
           <input type="email" name="email" placeholder="Email" class="input-email" required/>
             <input type="password" name="password" placeholder="Password" class="input-password" required/>

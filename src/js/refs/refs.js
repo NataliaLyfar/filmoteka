@@ -61,6 +61,6 @@ export const refs = {
     modalSinUpError: document.querySelector('.signup-modal__error'),
     logIn: document.querySelector('.js-login'),
     logOut: document.querySelector('.js-logout'),
-   
+   googleBtn: document.getElementById('googleBtn')
   }
 };
