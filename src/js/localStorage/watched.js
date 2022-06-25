@@ -16,13 +16,14 @@ const dataCombine = movie => {
 
 export const requestForWatched = () => {
   libraryGallery.innerHTML = '';
+  
   const watchedArr = getFromStorage('filmsWatched');
 
-  if (watchedArr.length === 0) {
+  if (watchedArr?.length === 0) {
     Notify.info("You don't have watched movies. Time to relax! Choose interesting movies to watch and ENJOY!");
     btnWatched.classList.remove('orange');
   } else {
-    watchedArr.map(id => {
+    watchedArr?.map(id => {
       getDataFilms(id).then(result => {
         const data = result;
         const fullData = dataCombine(data);
