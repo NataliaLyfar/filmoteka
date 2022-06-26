@@ -16,8 +16,10 @@ function openAuthModal (e) {
     refs.auth.backdropAuthModal.classList.remove('is-hidden');
 }
 
-refs.auth.logIn?.addEventListener('click', openAuthModal);
 
+if(document.title === 'Home'){
+  refs.auth.logIn?.addEventListener('click', openAuthModal);
+}
 export function closeAuthModal () {
   refs.auth.backdropAuthModal.classList.add('is-hidden');
 }
