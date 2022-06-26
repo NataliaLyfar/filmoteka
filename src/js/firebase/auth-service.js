@@ -63,6 +63,7 @@ export function signInUser(email, password) {
     });
 }
 export function logInByGoogle() {
+  const app = initializeApp(firebaseConfig);
   const provider = new GoogleAuthProvider(app);
   signInWithRedirect(auth, provider);
   AuthState(user);
