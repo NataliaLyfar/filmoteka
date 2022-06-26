@@ -84,11 +84,12 @@ export async function AuthState(user) {
     
   });
 }
+if(document.title === 'Home'){
 window.onload = function () {
   setTimeout(hideLoader, 1500)
   setTimeout(showLoader, 2000)
   AuthState(user);
-};
+};}
 export async function updateInUser(name) {
   return await updateProfile(auth.currentUser, {
     displayName: `${name}`,
