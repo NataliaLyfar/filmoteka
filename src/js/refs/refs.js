@@ -3,6 +3,7 @@ export const refs = {
     formEl: document.querySelector('#search-form'),
     gallery: document.querySelector('.gallery'),
     select: document.querySelector('.genre'),
+    option: document.querySelector('option'),
   },
   library: {
     btnQueue: document.querySelector('.btn--queue'),

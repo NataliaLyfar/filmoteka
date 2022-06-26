@@ -2,6 +2,7 @@ import { api } from './api';
 
 export const popularParams = {
   page: 1,
+  with_genres: '',
 };
 
 export const getPopularMovie = async () => {

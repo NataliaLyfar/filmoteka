@@ -20,6 +20,7 @@ import {refs} from '../refs/refs';
 import {closeAuthModal} from '../modal-auth'
 import {hideLoader, showLoader} from '../loader.js'
 
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -64,6 +65,7 @@ export function signInUser(email, password) {
 export function logInByGoogle() {
   const provider = new GoogleAuthProvider(app);
   signInWithRedirect(auth, provider);
+  AuthState(user);
   closeAuthModal();
 }
 export async function AuthState(user) {
@@ -73,6 +75,8 @@ export async function AuthState(user) {
         update(ref(db, 'users/' + user.uid), {
           last_login: dt,
         })
+        refs.auth.logOut?.classList.remove('is-hidden');
+        refs.auth.logIn?.classList.add('is-hidden');
       return sessionStorage.setItem('userId', `${user.uid}`);
     } else {
       return;

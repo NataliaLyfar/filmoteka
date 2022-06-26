@@ -12,8 +12,8 @@ const {
 } = refs;
 let currentPage = 1;
 function renderCollection(currentPage) {
-  if(input?.value || refs.home.select.value !== 'Choose genre'){
-    if (refs.home.select.value !== 'Choose genre') {
+  if(input?.value || refs.home.select.value){
+    if (refs.home.select.value) {
    renderByGenre(currentPage);
    return; 
   };
@@ -88,11 +88,11 @@ export function renderingPaginationMarkup(currentPage, maxPage) {
 
 function onPaginationBtnClick(event) {
   gallery.innerHTML = '';
-if(input?.value || refs.home.select.value !== 'Choose genre'){
+if(input?.value || refs.home.select.value){
   if (input?.value) {
     currentPage = Number(getFromStorage('active-search'));
   } 
-  if (refs.home.select.value.length !== 'Choose genre') {
+  if (refs.home.select.value.length) {
     currentPage = Number(getFromStorage('select'));
   }}
   else {

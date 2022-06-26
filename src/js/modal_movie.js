@@ -29,6 +29,7 @@ function openModal() {
   refs.modalRefs.closeModalBtn.addEventListener('click', closeModal);
   refs.modalRefs.overlayModal.addEventListener('click', onOverlayClick);
   e => showMovieCard(e);
+  console.log(refs.auth.logInModal);
 }
 
 function closeModal() {
