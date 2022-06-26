@@ -37,9 +37,10 @@ export const requestForMovie = async page => {
 
 const onSearch = e => {
   e.preventDefault();
-
   refs.home.gallery.innerHTML = '';
-  filmsParams.query = e.currentTarget.elements[0].value;
+  refs.home.select.value = '';
+  let query = e.currentTarget.elements[0].value;
+  filmsParams.query = query;
   if (filmsParams.query.length <= 1) {
     refs.pagination.paginationList.innerHTML = '';
     Notify.failure(
@@ -49,6 +50,7 @@ const onSearch = e => {
   }
   let startPage = filmsParams.page;
   requestForMovie(startPage);
+
 };
 
 refs.home.formEl?.addEventListener('submit', onSearch);

@@ -9,8 +9,8 @@ import {
   } from './firebase/auth-service.js';
   import {refs} from './refs/refs.js';
   import {hideLoader, showLoader} from './loader.js';
-  
 
+  
 function openAuthModal (e) {
   e.preventDefault();
     refs.auth.backdropAuthModal.classList.remove('is-hidden');
@@ -88,7 +88,5 @@ refs.auth.googleBtn?.addEventListener('click', e => {
   e.preventDefault();
     hideLoader();
     logInByGoogle();
-    refs.auth.logOut.classList.remove('is-hidden');
-    refs.auth.logIn.classList.add('is-hidden');
     showLoader();
 })

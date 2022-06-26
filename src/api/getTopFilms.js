@@ -1,6 +1,7 @@
 import { api } from './api';
 export const topParams = {
   page: 1,
+  with_genres: '',
 };
 
 export const getTopFilms = async () => {
