@@ -8,8 +8,7 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult
+ 
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -22,10 +21,9 @@ import {refs} from '../refs/refs';
 import {closeAuthModal} from '../modal-auth'
 import {hideLoader, showLoader} from '../loader.js'
 
-
+const provider = new GoogleAuthProvider();
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const provider = new GoogleAuthProvider(app);
 const auth = getAuth();
 export const user = auth.currentUser;
 export let userId = sessionStorage.getItem('userId');
@@ -65,22 +63,19 @@ export function signInUser(email, password) {
     });
 }
 export function logInByGoogle() {
-
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      AuthState(user);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    });
-
+  signInWithPopup(auth, provider).then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    update(ref(db, 'users/' + user.uid), {
+      last_login: 'dwohoo',
+    })
+    
+  }).catch((error) => {
+    const errorMessage = error.message;
+  });
   closeAuthModal();
 }
 export async function AuthState(user) {
