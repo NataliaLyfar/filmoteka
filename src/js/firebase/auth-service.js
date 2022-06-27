@@ -8,7 +8,6 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
- 
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -136,9 +135,7 @@ function signUpErrorRender(errorMessage) {
 
   if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
     errorText = 'User is already registered';
-  } else {
-    errorText = 'Unknow Error';
-  }
+  } 
   refs.auth.modalSinUpError.innerHTML = `<p class="modal__error-text">${errorText}</p>`;
 }
 
