@@ -30,7 +30,8 @@
 .header-buttons-list {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .header-button {
@@ -43,7 +44,6 @@
   @media screen and (min-width: $mobile) {
     width: 130px;
   }
-
   &:hover,
   &:focus {
     background-color: $accent-color;
