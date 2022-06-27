@@ -8,6 +8,8 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -23,7 +25,7 @@ import {hideLoader, showLoader} from '../loader.js'
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
+const provider = new GoogleAuthProvider();
 const auth = getAuth();
 export const user = auth.currentUser;
 export let userId = sessionStorage.getItem('userId');
@@ -63,8 +65,7 @@ export function signInUser(email, password) {
     });
 }
 export function logInByGoogle() {
-  const provider = new GoogleAuthProvider();
-  const auth = getAuth();
+
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -72,14 +73,15 @@ export function logInByGoogle() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      AuthState(user);
+     
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.customData.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
     });
-  
+   
+    AuthState(user);
   closeAuthModal();
 }
 export async function AuthState(user) {
