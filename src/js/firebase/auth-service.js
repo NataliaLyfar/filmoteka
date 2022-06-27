@@ -7,7 +7,7 @@ import {
   signOut,
   updateProfile,
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -63,10 +63,23 @@ export function signInUser(email, password) {
     });
 }
 export function logInByGoogle() {
-  const app = initializeApp(firebaseConfig);
-  const provider = new GoogleAuthProvider(app);
-  signInWithRedirect(auth, provider);
-  AuthState(user);
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      AuthState(user);
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+  
   closeAuthModal();
 }
 export async function AuthState(user) {
