@@ -1,11 +1,7 @@
 import {
     regUser,
     signInUser,
-    AuthState,
-    updateInUser,
-    user,
     signOutUser,
-    logInByGoogle,
   } from './firebase/auth-service.js';
   import {refs} from './refs/refs.js';
   import {hideLoader, showLoader} from './loader.js';
@@ -16,10 +12,8 @@ function openAuthModal (e) {
     refs.auth.backdropAuthModal.classList.remove('is-hidden');
 }
 
-
-if(document.title === 'Home'){
   refs.auth.logIn?.addEventListener('click', openAuthModal);
-}
+
 export function closeAuthModal () {
   refs.auth.backdropAuthModal.classList.add('is-hidden');
 }
@@ -61,11 +55,12 @@ function closeAuthModalByClickOnBack (e) {
     const password = formData.get('password');
     const username = formData.get('username');
     regUser(username, email, password);
-    updateInUser(username);
-    AuthState(user);
     clearInput(refs.auth.formReg, 3);
     refs.auth.formWrapperLogin.classList.add('vusually-hidden');
     showLoader();
+    closeAuthModal();
+    refs.auth.logOut.classList.remove('is-hidden');
+    refs.auth.logIn.classList.add('is-hidden');
   });
 
   refs.auth.formLog?.addEventListener('submit', e => {
@@ -76,19 +71,14 @@ function closeAuthModalByClickOnBack (e) {
     const password = formData.get('password');
     signInUser(email, password);
     showLoader();
+    closeAuthModal();
     clearInput(refs.auth.formLog, 2);
     refs.auth.logOut.classList.remove('is-hidden');
     refs.auth.logIn.classList.add('is-hidden');
   });
   
-  refs.auth.logOut?.addEventListener('click', e => {
+  refs.auth.logOut?.addEventListener('click', () => {
     signOutUser();
     refs.auth.logOut.classList.add('is-hidden');
     refs.auth.logIn.classList.remove('is-hidden');
   });
-refs.auth.googleBtn?.addEventListener('click', e => {
-  e.preventDefault();
-    hideLoader();
-    logInByGoogle();
-    showLoader();
-})

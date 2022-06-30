@@ -2,12 +2,8 @@ import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   createUserWithEmailAndPassword,
-  signOut,
-  updateProfile,
-  GoogleAuthProvider,
-  signInWithPopup,
+  signOut
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -15,16 +11,22 @@ import {
   ref,
   update,
 } from 'firebase/database';
-import {firebaseConfig} from './auth-config.js';
 import {refs} from '../refs/refs';
-import {closeAuthModal} from '../modal-auth'
-import {hideLoader, showLoader} from '../loader.js'
 
-const provider = new GoogleAuthProvider();
+const firebaseConfig = {
+  apiKey: "AIzaSyBSEyaPe326EMRwJE-55WH9fYKOm1pd2ic",
+  authDomain: "filmoteka-7e584.firebaseapp.com",
+  databaseURL: "https://filmoteka-7e584-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "filmoteka-7e584",
+  storageBucket: "filmoteka-7e584.appspot.com",
+  messagingSenderId: "14016742908",
+  appId: "1:14016742908:web:0e03090a7164e86a1ade79"
+};
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth();
-export const user = auth.currentUser;
+
 export let userId = sessionStorage.getItem('userId');
 
 export function regUser(username, email, password) {
@@ -35,8 +37,7 @@ export function regUser(username, email, password) {
         username: username,
         email: email
       })
-      updateProfile(user, { displayName });
-      closeAuthModal();
+   sessionStorage.setItem('userId', `${user.uid}`);
     })
     .catch(error => {
       const errorMessage = error.message;
@@ -54,56 +55,15 @@ export function signInUser(email, password) {
       update(ref(db, 'users/' + user.uid), {
         last_login: dt,
       })
-      closeAuthModal();
+     sessionStorage.setItem('userId', `${user.uid}`);
     })
     .catch(error => {
       const errorMessage = error.message;
       setTimeout(()=>signInErrorTextRender(errorMessage), 500);
     });
 }
-export function logInByGoogle() {
-  signInWithPopup(auth, provider).then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    update(ref(db, 'users/' + user.uid), {
-      last_login: 'dwohoo',
-    })
-    
-  }).catch((error) => {
-    const errorMessage = error.message;
-  });
-  closeAuthModal();
-}
-export async function AuthState(user) {
-  return await onAuthStateChanged(auth, user => {
-    if (user) {
-      const dt = new Date();
-        update(ref(db, 'users/' + user.uid), {
-          last_login: dt,
-        })
-        refs.auth.logOut?.classList.remove('is-hidden');
-        refs.auth.logIn?.classList.add('is-hidden');
-      return sessionStorage.setItem('userId', `${user.uid}`);
-    } else {
-      return;
-    }
-    
-  });
-}
-if(document.title === 'Home'){
-window.onload = function () {
-  setTimeout(hideLoader, 1500)
-  setTimeout(showLoader, 2000)
-  AuthState(user);
-};}
-export async function updateInUser(name) {
-  return await updateProfile(auth.currentUser, {
-    displayName: `${name}`,
-  })
-}
+
+
 export async function signOutUser() {
   return await signOut(auth)
     .then(() => {
@@ -111,7 +71,6 @@ export async function signOutUser() {
       localStorage.removeItem('userId');
       sessionStorage.removeItem('userId');
     })
-
 }
 
 function signInErrorTextRender(errorMessage) {
