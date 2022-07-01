@@ -1,6 +1,6 @@
 import Swiper from 'swiper/swiper-bundle';
 import 'swiper/swiper-bundle.min.css';
-import { refs } from './refs/refs';
+import { refs } from '../refs/refs';
 
 const swiper = new Swiper('.swiper', {
   navigation: {

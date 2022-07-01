@@ -1,4 +1,5 @@
 .movie-card {
+  position: relative;
   cursor: pointer;
   margin-bottom: 20px;
   cursor: pointer;
@@ -71,4 +72,21 @@
   font-family: $primary-font;
   @include font(500, 12px, 1.14);
   color: $accent-color;
+}
+.films__rating {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  background-color: $accent-color;
+  color: $secondary-color;
+  border-radius: 5px;
 }

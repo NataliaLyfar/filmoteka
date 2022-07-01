@@ -9,22 +9,26 @@
       </a>
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="/src/index.html" class="nav__link page-link">home</a>
+          <a href="/src/index.html" class="nav__link page-link" data-lng="btnHomelib">home</a>
         </li>
         <li class="nav-item">
           <a href="/src/library.html" class="nav__link page-link page-link--current-page"
-            >my library</a
+          data-lng="btnLibrarylib">my library</a
           >
         </li>
       </ul>
     </nav>
+    <select class="header__select library__select" id="lang">
+      <option class="header__select--option" value="en" selected>EN</option>
+      <option class="header__select--option" value="uk">UA</option>
+    </select>
     <div class="button-container">
       <ul class="header-buttons-list">
         <li>
-          <button class="header-button btn--watched">WATCHED</button>
+          <button class="header-button btn--watched" data-lng="btnWatched">WATCHED</button>
         </li>
         <li>
-          <button class="header-button btn--queue">QUEUE</button>
+          <button class="header-button btn--queue" data-lng="btnTurn">QUEUE</button>
         </li>
       </ul>
     </div>

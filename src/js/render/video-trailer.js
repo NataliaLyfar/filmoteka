@@ -1,5 +1,5 @@
 import { Notify } from 'notiflix';
-import { getTrailer } from '../../api/getTrailer';
+import { getTrailer } from '../api/getTrailer';
 import { refs } from '../refs/refs';
 
 export const renderTrailer = evt => {

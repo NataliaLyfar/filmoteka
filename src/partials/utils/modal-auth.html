@@ -2,26 +2,26 @@
     <div class="auth-container">
   <div class="form-wrapper" id="wrapper-login">
     <div class="content-wrapper" id="content-signin">
-        <p class="form-greeting">Hello!</p>
+        <p class="form-greeting" data-lng="FormGreeting">Hello!</p>
         <form class="form-login form-signin" name="checkboxlog" checked>
-          <input type="email" name="email" placeholder="Email" class="input-email" required/>
-            <input type="password" name="password" placeholder="Password" class="input-password" required/>
-            <button type="submit" class="btn-login">LOGIN</button>
+          <input type="email" name="email" placeholder="Email" class="input-email" data-lng="Email" required/>
+            <input type="password" name="password" placeholder="Password" data-lng="Password" class="input-password" required/>
+            <button type="submit" class="btn-login" data-lng="BtnModalIn">LOGIN</button>
         </form>
-        <p class="auth-form-text">No account? <a class='link-to-signup' href="#wrapper-signup">Sign up</a></p>
+        <p class="auth-form-text" data-lng="FormText">No account?</p> <a data-lng="ModalUp" class='link-to-signup' href="#wrapper-signup">Sign up</a>
         <div class="signin-modal__error"></div>
       </div>
   </div>
   <div class="form-wrapper visually-hidden" id="wrapper-signup">
     <div class="content-wrapper" id="content-signup">
-        <p class="form-greeting">Join us!</p>
+        <p class="form-greeting" data-lng="FormJoin">Join us!</p>
         <form class="form-login form-signup">
-            <input type="email" name="email" placeholder="Email" class="input-email" required/>
-            <input type="text" name="username" placeholder="Username" class="input-username" />
-            <input type="password" name="password" placeholder="Password" class="input-password" required/>
-            <button type="submit" class="btn-signup">SIGN UP</button>
+            <input type="email" name="email" placeholder="Email" class="input-email input-email--reg" data-lng="Email" required/>
+            <input type="text" name="username" placeholder="Username" class="input-username" data-lng="FullName" />
+            <input type="password" name="password" placeholder="Password" class="input-password input-password--reg" data-lng="Password" required/>
+            <button type="submit" class="btn-signup" data-lng="BtnRegistrationg">SIGN UP</button>
         </form>
-        <p class="auth-form-text">Got account? <a class='link-to-signin' href="#wrapper-login">Sign in</a></p>
+        <p class="auth-form-text" data-lng="FormTextSignup">Got account? </p><a  data-lng="ModalIn" class='link-to-signin' href="#wrapper-login">Sign in</a>
         <div class="signup-modal__error"></div>
       </div>
   </div>

@@ -1,0 +1,67 @@
+<article class='modal-movie-wrapper' id='{{id}}'>
+  <div class='modal-info'>
+      <img
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        class='modal-movie-poster'
+        alt='#'
+        loading='lazy'
+      />
+      <div class='buttonTrailer'>
+        <button
+          data-name='Trailer'
+          data-attribute='{{id}}'
+          class='buttonYouTubeTrailer bgButtom'
+          type='button'>          
+        </button>
+      </div>
+    <div class='modal-movie-information'>
+      <h2 class='modal-movie-title'>{{title}}</h2>
+      <ul class="modal-movie-data">
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Рейтинг / Проголосувало</p>
+                <p class="modal-movie-description">
+                    <span class="modal-movie-description-vote">{{vote_average}}</span>
+                    <span class="modal-movie-data-slash">/</span>
+                    <span class="modal-movie-description-votes">{{vote_count}}</span>
+                </p>
+            </li>
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Популярнiсть</p>
+                <p class="modal-movie-description">{{popularity}}</p>
+            </li>
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Оригінальна назва</p>
+                <p class="modal-movie-description-title">{{original_title}}</p>
+            </li>
+            <li class="modal-movie-item">
+                <p class="modal-movie-data-name">Жанр</p>
+                <p class="modal-movie-description">
+                    {{#each genres}}
+                    <span class="modal-movie-genre-name">{{name}} </span>
+                    {{/each}}
+                </p>
+            </li>
+        </ul>
+      <p class='modal-movie-about'>ОПИС</p>
+      <p class='modal-movie-descript'>{{overview}}
+      </p>
+      <div class='modal-movie-button-wrapper'>
+        <button
+          data-name='watched'
+          class='modal-movie-button modal-watched-button'
+          type='button'
+        >
+          Додати до переглянутi
+        </button>
+        <button
+          data-name='queue'
+          class='modal-movie-button modal-queue-button'
+          type='button'
+        >
+          Додати до черги
+        </button>
+      </div>      
+      </div>
+    </div>
+  </div>
+</article>

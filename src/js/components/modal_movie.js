@@ -1,11 +1,18 @@
-import cardModalMovieTemplate from '../template/modalMovie.hbs';
-import { getFromStorage, addToStorage } from './localStorage/storage';
-import { renderTrailer } from './render/video-trailer';
-import { requestForWatched } from './localStorage/watched';
-import { requestForQueue } from './localStorage/queue';
-import { dynamicRefs } from './refs/dynamicRefs';
-import { getDataFilms } from '/src/api/getDataFilms';
-import { refs } from './refs/refs';
+import cardModalMovieTemplate from '/src/template/modalMovie.hbs';
+import cardModalMovieTemplateUk from '/src/template/modalMovieUk.hbs';
+import { getFromStorage, addToStorage } from '../localStorage/storage';
+import { renderTrailer } from '../render/video-trailer';
+import { requestForWatched } from '../localStorage/watched';
+import { requestForQueue } from '../localStorage/queue';
+import { dynamicRefs } from '../refs/dynamicRefs';
+import { getDataFilms } from '../api/getDataFilms';
+import { refs } from '../refs/refs';
+
+let langStart = localStorage.getItem('lang') || '';
+if (langStart === '') {
+  localStorage.setItem('lang', 'en');
+  langStart = 'en';
+}
 
 function pressEsc(evt) {
   if (
@@ -50,7 +57,19 @@ export async function showMovieCard(event) {
 
   id = event.target.id;
   const { ...data } = await getDataFilms(id);
-  refs.modalRefs.overlayModal.innerHTML = cardModalMovieTemplate(data);
+  let markup = null;
+  switch (langStart) {
+    case 'en':
+      markup = cardModalMovieTemplate(data);
+      break;
+    case 'uk':
+      markup = cardModalMovieTemplateUk(data);
+      break;
+    default:
+      console.log('Invalid language');
+      break;
+  }
+  refs.modalRefs.overlayModal.innerHTML = markup;
   const liveRefs = dynamicRefs();
 
   monitorBtnChange();
@@ -108,10 +127,18 @@ export async function showMovieCard(event) {
     let currentIdFilm = id;
     let filmId = filmsWatched.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
-      liveRefs.watchedBtn.textContent = 'Delete from watched';
+      if (langStart === "en"){
+      liveRefs.watchedBtn.textContent = 'Delete from watched';};
+      if (langStart === "uk"){
+      liveRefs.watchedBtn.textContent = 'Видалити з переглянутих';
+      }
       liveRefs.watchedBtn.classList.add('active');
     } else {
-      liveRefs.watchedBtn.textContent = 'Add to watched';
+      if (langStart === "en"){
+      liveRefs.watchedBtn.textContent = 'Add to watched';}
+      if (langStart === "uk"){
+      liveRefs.watchedBtn.textContent = 'Додати до переглянутих';
+      }
       liveRefs.watchedBtn.classList.remove('active');
     }
 
@@ -123,10 +150,17 @@ export async function showMovieCard(event) {
 
     filmId = filmsQueue.find(el => el === currentIdFilm);
     if (filmId === currentIdFilm) {
-      liveRefs.queueBtn.textContent = 'Delete from Queue';
+      if (langStart === "en"){
+      liveRefs.queueBtn.textContent = 'Delete from Queue';}
+      if (langStart === "uk"){
+      liveRefs.queueBtn.textContent = 'Видалити з черги';}
       liveRefs.queueBtn.classList.add('active');
     } else {
-      liveRefs.queueBtn.textContent = 'Add to Queue';
+      if (langStart === "en"){
+      liveRefs.queueBtn.textContent = 'Add to Queue';}
+      if (langStart === "uk"){
+      liveRefs.queueBtn.textContent = 'Додати до черги';
+      }
       liveRefs.queueBtn.classList.remove('active');
     }
   }

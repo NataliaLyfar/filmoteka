@@ -1,13 +1,18 @@
 import { Notify } from 'notiflix';
-import { renderingPaginationMarkup } from '../pagination.js';
-import { showLoader, hideLoader } from '../loader.js';
+import { renderingPaginationMarkup } from '../components/pagination';
+import { showLoader, hideLoader } from '../components/loader.js';
 import movieCard from '/src/template/movieCard.hbs';
-import { dataCombine } from '../genreUtils.js';
-import { getGenres } from '/src/api/getGeners';
-import { filmsParams, getFilmsByKey } from '../../api/getFilmsByKey.js';
+import { dataCombine } from '../components/genreUtils.js';
+import { getGenres } from '../api/getGeners';
+import { filmsParams, getFilmsByKey } from '../api/getFilmsByKey.js';
 import { refs } from '../refs/refs';
 import { addToStorage } from '../localStorage/storage.js';
 
+let langStart = localStorage.getItem('lang') || '';
+if (langStart === '') {
+  localStorage.setItem('lang', 'en');
+  langStart = 'en';
+}
 export const renderMovie = data =>
   refs.home.gallery?.insertAdjacentHTML('beforeend', movieCard(data));
 
@@ -22,9 +27,13 @@ export const requestForMovie = async page => {
   if (movies.length === 0) {
     showLoader();
     refs.pagination.paginationList.innerHTML = '';
-    Notify.failure(
-      'Search result not successful. Enter the correct movie name and try again.'
-    );
+    let messageText = ' ';
+    if (langStart === "en"){
+     messageText = 'Search result not successful. Enter the correct movie name and try again.';}
+     if (langStart === "uk"){
+       messageText = 'Невдалий результат пошуку. Введiть коректну назву фiльму. Спробуйте ще!';
+     }
+    Notify.failure(messageText);
     return;
   }
   const { genres } = await getGenres();
@@ -43,9 +52,13 @@ const onSearch = e => {
   filmsParams.query = query;
   if (filmsParams.query.length <= 1) {
     refs.pagination.paginationList.innerHTML = '';
-    Notify.failure(
-      'Search result not successful. Enter the correct movie name and try again.'
-    );
+    let messageText = ' ';
+    if (langStart === "en"){
+     messageText = 'Search result not successful. Enter the correct movie name and try again.';}
+     if (langStart === "uk"){
+       messageText = 'Невдалий результат пошуку. Введiть коректну назву фiльму. Спробуйте ще!';
+     }
+    Notify.failure(messageText);
     return;
   }
   let startPage = filmsParams.page;

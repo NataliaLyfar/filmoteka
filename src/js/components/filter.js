@@ -1,9 +1,13 @@
-import {requestForPage} from './render/renderPopularMovies';
-import {renderUpComing} from './render/renderUpComing';
-import {renderTopRated} from './render/renderTopRated';
-import {refs} from '../js/refs/refs.js';
+import {requestForPage} from '../render/renderPopularMovies';
+import {renderUpComing} from '../render/renderUpComing';
+import {renderTopRated} from '../render/renderTopRated';
+import {refs} from '../refs/refs.js';
 
-
+let langStart = localStorage.getItem('lang') || '';
+if (langStart === '') {
+  localStorage.setItem('lang', 'en');
+  langStart = 'en';
+}
  let page = 1;
  export const filter = () => {
 refs.filter.topRatedBtn.addEventListener('click', onClickTopRatedBtn);
@@ -12,7 +16,11 @@ refs.filter.upcomingBtn.addEventListener('click', onClicUpcomingBtn);
 
 function onClickTopRatedBtn() {
   refs.home.select.value = '';
-  refs.home.option.textContent = 'Choose genre';
+  if (langStart === "en"){
+    refs.home.option.textContent = 'Choose genre';};
+    if (langStart === "uk"){
+      refs.home.option.textContent = 'Оберiть жанр';;
+    }
   refs.home.select.classList.remove('btn-tab-active')
   refs.pagination.input.value = '';
   refs.home.gallery.innerHTML ='';
@@ -23,7 +31,11 @@ function onClickTopRatedBtn() {
 }
 function onClicUpcomingBtn() {
   refs.home.select.value = '';
-  refs.home.option.textContent = 'Choose genre';
+  if (langStart === "en"){
+    refs.home.option.textContent = 'Choose genre';};
+    if (langStart === "uk"){
+      refs.home.option.textContent = 'Оберiть жанр';;
+    }
   refs.home.select.classList.remove('btn-tab-active')
   refs.home.gallery.innerHTML ='';
   refs.pagination.input.value = '';
@@ -35,7 +47,11 @@ function onClicUpcomingBtn() {
 
 function onClickPopularBtn() {
   refs.home.select.value = '';
-  refs.home.option.textContent = 'Choose genre';
+  if (langStart === "en"){
+    refs.home.option.textContent = 'Choose genre';};
+    if (langStart === "uk"){
+      refs.home.option.textContent = 'Оберiть жанр';;
+    }
   refs.home.select.classList.remove('btn-tab-active')
   refs.home.gallery.innerHTML ='';
   refs.pagination.input.value = '';

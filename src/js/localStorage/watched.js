@@ -2,10 +2,16 @@ import { Notify } from 'notiflix';
 import { getFromStorage } from './storage';
 import oneMovieCard from '/src/template/oneMoviecard.hbs';
 import { refs } from '../refs/refs';
-import { showMovieCard } from '../modal_movie';
-import { getDataFilms } from '../../api/getDataFilms';
+import { showMovieCard } from '../components/modal_movie';
+import { getDataFilms } from '../api/getDataFilms';
 
 const { libraryGallery, btnWatched, btnQueue } = refs.library;
+
+let langStart = localStorage.getItem('lang') || '';
+if (langStart === '') {
+  localStorage.setItem('lang', 'en');
+  langStart = 'en';
+}
 
 const dataCombine = movie => {
   return {
@@ -20,7 +26,13 @@ export const requestForWatched = () => {
   const watchedArr = getFromStorage('filmsWatched');
 
   if (watchedArr?.length === 0) {
-    Notify.info("You don't have watched movies. Time to relax! Choose interesting movies to watch and ENJOY!");
+    let messageText = ' ';
+    if (langStart === "en"){
+     messageText = "You don't have any movies in your library. Time to relax! Choose interesting movies to watch and ENJOY!";}
+     if (langStart === "uk"){
+       messageText = 'У вашiй бiблiотецi вiдсутнi фiльми для перегляду. Час вiдпочивати! Обирайте фiльм та насолоджуйтеся переглядом';
+     }
+    Notify.info(messageText);
     btnWatched.classList.remove('orange');
   } else {
     watchedArr?.map(id => {

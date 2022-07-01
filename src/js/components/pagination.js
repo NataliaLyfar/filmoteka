@@ -1,10 +1,10 @@
-import { requestForMovie } from './render/renderByKey';
-import { requestForPage } from './render/renderPopularMovies';
-import { refs } from './refs/refs';
-import { getFromStorage } from '../js/localStorage/storage';
-import { renderTopRated } from './render/renderTopRated';
-import { renderUpComing } from './render/renderUpComing';
-import {renderByGenre} from './render/renderbyGenre'
+import { requestForMovie } from '../render/renderByKey';
+import { requestForPage } from '../render/renderPopularMovies';
+import { refs } from '../refs/refs';
+import { getFromStorage } from '../localStorage/storage';
+import { renderTopRated } from '../render/renderTopRated';
+import { renderUpComing } from '../render/renderUpComing';
+import {renderByGenre} from '../render/renderbyGenre'
 
 const {
   pagination: { paginationList, input, libraryGallery },

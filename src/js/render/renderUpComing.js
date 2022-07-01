@@ -1,9 +1,9 @@
-import { renderingPaginationMarkup } from '../pagination';
+import { renderingPaginationMarkup } from '../components/pagination';
 import { renderMovie } from './renderByKey';
-import { showLoader, hideLoader } from '../loader';
-import { dataCombine } from '../genreUtils';
-import { getGenres } from '/src/api/getGeners';
-import { upParams, getUpcomingFilms } from '/src/api/getUpComingFilms';
+import { showLoader, hideLoader } from '../components/loader';
+import { dataCombine } from '../components/genreUtils.js';
+import { getGenres } from '../api/getGeners';
+import { upParams, getUpcomingFilms } from '../api/getUpComingFilms';
 import { addToStorage } from '../localStorage/storage';
 
 export const renderUpComing = async page => {
