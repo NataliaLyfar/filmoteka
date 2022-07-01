@@ -1,4 +1,4 @@
-import './js/firebase/auth-service.js';
+import {userId} from './js/firebase/auth-service.js';
 import './js/modal-auth.js'
 import { requestForPage } from './js/render/renderPopularMovies.js';
 import './js/render/renderByKey.js';
@@ -16,6 +16,7 @@ import './js/localStorage/queue.js';
 import './js/Notify.js';
 import { onChangeSize } from './js/Notify.js';
 import './js/filter.js';
+import {refs} from './js/refs/refs';
 
 
 let firstPage = 1;
@@ -28,5 +29,11 @@ if (document.title === 'My Library') {
 }
 
 window.addEventListener('resize', onChangeSize);
-
-
+if (document.title === 'Home'){
+if (sessionStorage.getItem('userId')){
+  refs.auth.logOut.classList.remove('is-hidden');
+  refs.auth.logIn.classList.add('is-hidden');
+} else {
+  refs.auth.logOut.classList.add('is-hidden');
+  refs.auth.logIn.classList.remove('is-hidden');
+}}
