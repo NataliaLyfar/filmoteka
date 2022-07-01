@@ -41,8 +41,8 @@ export async function renderByGenre(page) {
 filmsByGenreParams.page = page;
     const { ...data } = await getFilmsByGenre();
     const movies = data.results;
-    const totalSearchPages = data.total_pages;
-    renderingPaginationMarkup(page, totalSearchPages);
+    const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
+    renderingPaginationMarkup(page, totalPages);
     const { genres } = await getGenres();
     const fullInfo = dataCombine(movies, genres);
     renderMovie(fullInfo);

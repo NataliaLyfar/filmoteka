@@ -10,11 +10,13 @@ export const renderTopRated = async page => {
   hideLoader();
   topParams.page = page;
   const { ...data } = await getTopFilms();
-  const currentPage = data.page;
-  renderingPaginationMarkup(page, data.total_pages);
+  const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
+  renderingPaginationMarkup(page, totalPages);
+  const movies = data.results;
   const { genres } = await getGenres();
-  const fullInfo = dataCombine(data.results, genres);
+  const fullInfo = dataCombine(movies, genres);
   renderMovie(fullInfo);
+  const currentPage = data.page;
   addToStorage('active-top', currentPage);
   showLoader();
 };

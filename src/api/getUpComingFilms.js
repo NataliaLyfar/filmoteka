@@ -1,4 +1,5 @@
 import { api } from './api';
+
 export const upParams = {
     page: 1,
     with_genres: '',
