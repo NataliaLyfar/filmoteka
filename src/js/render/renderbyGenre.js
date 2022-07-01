@@ -1,14 +1,13 @@
 import  Choices from 'choices.js';
 import genresData from './genres.json';
-import { renderingPaginationMarkup } from '../pagination.js';
-import { showLoader, hideLoader } from '../loader.js';
+import { renderingPaginationMarkup } from '../components/pagination';
+import { showLoader, hideLoader } from '../components/loader';
 import movieCard from '/src/template/movieCard.hbs';
-import { dataCombine } from '../genreUtils.js';
-import { getGenres } from '/src/api/getGeners';
-import {getFilmsByGenre, filmsByGenreParams} from '../../api/getFilmsByGenre.js'
+import { dataCombine } from '../components/genreUtils';
+import { getGenres } from '../api/getGeners';
+import {getFilmsByGenre, filmsByGenreParams} from '../api/getFilmsByGenre.js'
 import { refs } from '../refs/refs';
-import { addToStorage } from '../localStorage/storage.js';
-import {filter} from '../filter'
+import { addToStorage } from '../localStorage/storage';
 
 
 const {select} = refs.home;
@@ -20,7 +19,9 @@ const choicesgenre = new Choices(select, {
    removeItems: true,
 });
 
+
 const onSelectChange = () => {
+  console.log(select);
   refs.home.gallery.innerHTML = '';
   refs.pagination.input.value = '';
   refs.filter.popularBtn.classList.remove('btn-tab-active');
@@ -36,7 +37,8 @@ select?.addEventListener('change', onSelectChange);
 }
 const renderMovie = data =>
   refs.home.gallery?.insertAdjacentHTML('beforeend', movieCard(data));
-export async function renderByGenre(page) {
+
+  export async function renderByGenre(page) {
   hideLoader();
 filmsByGenreParams.page = page;
     const { ...data } = await getFilmsByGenre();

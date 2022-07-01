@@ -1,8 +1,10 @@
 import { api } from './api';
 
+
 export const filmsParams = {
   query: '',
   page: 1,
+  language: localStorage.lang || 'en',
 };
 
 export const getFilmsByKey = async () => {

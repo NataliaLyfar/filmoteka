@@ -1,9 +1,9 @@
-import { renderingPaginationMarkup } from '../pagination';
+import { renderingPaginationMarkup } from '../components/pagination';
 import { renderMovie } from './renderByKey';
-import { showLoader, hideLoader } from '../loader.js';
-import { dataCombine } from '../genreUtils.js';
-import { getGenres } from '/src/api/getGeners';
-import { topParams, getTopFilms } from '../../api/getTopFilms';
+import { showLoader, hideLoader } from '../components/loader.js';
+import { dataCombine } from '../components/genreUtils.js';
+import { getGenres } from '../api/getGeners';
+import { topParams, getTopFilms } from '../api/getTopFilms';
 import { addToStorage } from '../localStorage/storage';
 
 export const renderTopRated = async page => {

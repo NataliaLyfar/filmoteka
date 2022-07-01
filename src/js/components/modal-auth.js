@@ -2,9 +2,9 @@ import {
     regUser,
     signInUser,
     signOutUser,
-  } from './firebase/auth-service.js';
-  import {refs} from './refs/refs.js';
-  import {hideLoader, showLoader} from './loader.js';
+  } from '../firebase/auth-service.js';
+  import {refs} from '../refs/refs.js';
+  import {hideLoader, showLoader} from './loader';
 
   
 function openAuthModal (e) {
@@ -58,9 +58,9 @@ function closeAuthModalByClickOnBack (e) {
     clearInput(refs.auth.formReg, 3);
     refs.auth.formWrapperLogin.classList.add('vusually-hidden');
     showLoader();
-    closeAuthModal();
-    refs.auth.logOut.classList.remove('is-hidden');
-    refs.auth.logIn.classList.add('is-hidden');
+    // closeAuthModal();
+    // refs.auth.logOut.classList.remove('is-hidden');
+    // refs.auth.logIn.classList.add('is-hidden');
   });
 
   refs.auth.formLog?.addEventListener('submit', e => {
@@ -71,10 +71,10 @@ function closeAuthModalByClickOnBack (e) {
     const password = formData.get('password');
     signInUser(email, password);
     showLoader();
-    closeAuthModal();
+    // closeAuthModal();
     clearInput(refs.auth.formLog, 2);
-    refs.auth.logOut.classList.remove('is-hidden');
-    refs.auth.logIn.classList.add('is-hidden');
+    // refs.auth.logOut.classList.remove('is-hidden');
+    // refs.auth.logIn.classList.add('is-hidden');
   });
   
   refs.auth.logOut?.addEventListener('click', () => {

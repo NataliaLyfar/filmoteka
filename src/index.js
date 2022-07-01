@@ -1,22 +1,23 @@
 import {userId} from './js/firebase/auth-service.js';
-import './js/modal-auth.js'
+import './js/components/modal-auth'
 import { requestForPage } from './js/render/renderPopularMovies.js';
 import './js/render/renderByKey.js';
 import './js/render/renderbyGenre.js'
-import './js/scrollTop';
-import './js/footer-modal.js';
-import './js/genreUtils.js';
+import './js/components/scrollTop';
+import './js/components/footer-modal';
+import './js/components/genreUtils';
 import './js/localStorage/change-theme';
-import './js/modal_movie.js';
+import './js/components/modal_movie';
 import './js/localStorage/storage';
 import './js/render/video-trailer';
-import './js/pagination.js';
+import './js/components/pagination.js';
 import { requestForWatched } from './js/localStorage/watched.js';
 import './js/localStorage/queue.js';
-import './js/Notify.js';
-import { onChangeSize } from './js/Notify.js';
-import './js/filter.js';
+import './js/components/Notify.js';
+import { onChangeSize } from './js/components/Notify.js';
+import './js/components/filter.js';
 import {refs} from './js/refs/refs';
+import changeLang from './js/components/selectLang'
 
 
 let firstPage = 1;

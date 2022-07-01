@@ -10,21 +10,25 @@
       <ul class="nav-list">
         <li class="nav-item">
           <a href="/src/index.html" class="nav__link page-link--current-page"
-            >home</a>
+          data-lng="btnHome">home</a>
         </li>
         <li class="nav-item">
-          <a href="/src/library.html" class="nav__link js-library">my library</a>
+          <a href="/src/library.html" class="nav__link js-library" data-lng="btnLibrary">my library</a>
         </li>
       </ul>
     </nav>
     <ul class="auth">
       <li class="js-login" id="login">
-        <a href="" class="log__link"> log in</a>
+        <a href="" class="log__link" data-lng="headerSignIn"> log in</a>
       </li>
       <li class="js-logout is-hidden" id="logOut">
-        <a href="" class="log__link">log out</a>
+        <a href="" class="log__link" data-lng="signOutBtn">log out</a>
       </li>
     </ul>
+    <select class="header__lang" id="lang">
+      <option class="header__lang--item" value="en" selected>EN</option>
+      <option class="header__lang--item" value="uk">UA</option>
+     </select>
     <form class="search-form" id="search-form">
       <input
         type="text"

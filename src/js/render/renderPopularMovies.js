@@ -1,9 +1,9 @@
-import { renderingPaginationMarkup } from '../pagination.js';
+import { renderingPaginationMarkup } from '../components/pagination.js';
 import movieCard from '/src/template/movieCard.hbs';
-import { showLoader, hideLoader } from '../loader.js';
-import { dataCombine } from '../genreUtils.js';
-import { getGenres } from '/src/api/getGeners';
-import { popularParams, getPopularMovie } from '../../api/getPopularMovie.js';
+import { showLoader, hideLoader } from '../components/loader.js';
+import { dataCombine } from '../components/genreUtils.js';
+import { getGenres } from '../api/getGeners';
+import { popularParams, getPopularMovie } from '../api/getPopularMovie.js';
 import { refs } from '../refs/refs';
 import { addToStorage } from '../localStorage/storage.js';
 

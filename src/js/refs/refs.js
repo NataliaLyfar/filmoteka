@@ -1,9 +1,11 @@
 export const refs = {
+  html: document.querySelector('html'),
   home: {
     formEl: document.querySelector('#search-form'),
     gallery: document.querySelector('.gallery'),
     select: document.querySelector('.genre'),
     option: document.querySelector('option'),
+    langSelector: document.querySelector('#lang'),
   },
   library: {
     btnQueue: document.querySelector('.btn--queue'),
@@ -62,6 +64,10 @@ export const refs = {
     modalSinUpError: document.querySelector('.signup-modal__error'),
     logIn: document.querySelector('.js-login'),
     logOut: document.querySelector('.js-logout'),
-   googleBtn: document.getElementById('googleBtn')
+    inputEmail: document.querySelector('.input-email'),
+    inputPassword: document.querySelector('.input-password'),
+    inputName: document.querySelector('.input-username'),
+    inputEmailReg: document.querySelector('.input-email--reg'),
+    inputPasswordReg: document.querySelector('.input-password--reg'),
   }
 };
