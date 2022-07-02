@@ -21,7 +21,6 @@ const choicesgenre = new Choices(select, {
 
 
 const onSelectChange = () => {
-  console.log(select);
   refs.home.gallery.innerHTML = '';
   refs.pagination.input.value = '';
   refs.filter.popularBtn.classList.remove('btn-tab-active');

@@ -91,7 +91,6 @@ function changeLang() {
 }
 const list = document.querySelectorAll(".choices__item");
 const newList = [...list];
-console.log(newList);
 for (let key in genrelist) {
     for (const element of newList) {
         if (element.outerText === key) {
