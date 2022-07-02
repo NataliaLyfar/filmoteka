@@ -122,6 +122,9 @@
     @include font(400, 16px, 1.17);
     color: rgba(223, 214, 217, .6);
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .form-wrapper .content-wrapper a {
