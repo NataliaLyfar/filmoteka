@@ -4,7 +4,7 @@ export const refs = {
     formEl: document.querySelector('#search-form'),
     gallery: document.querySelector('.gallery'),
     select: document.querySelector('.genre'),
-    option: document.querySelector('option'),
+    option: document.querySelector('.genre option'),
     langSelector: document.querySelector('#lang'),
   },
   library: {

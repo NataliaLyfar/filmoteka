@@ -19,7 +19,10 @@ import './js/components/filter.js';
 import {refs} from './js/refs/refs';
 import changeLang from './js/components/selectLang'
 
-
+let startPage = 1;
+if (document.title === 'Home') {
+  requestForPage(startPage);
+}
 
 
 if (document.title === 'My Library') {
