@@ -10,7 +10,7 @@ export const renderTopRated = async page => {
   hideLoader();
   topParams.page = page;
   const { ...data } = await getTopFilms();
-  const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
+  const totalPages = data.total_pages;
   renderingPaginationMarkup(page, totalPages);
   const movies = data.results;
   const { genres } = await getGenres();

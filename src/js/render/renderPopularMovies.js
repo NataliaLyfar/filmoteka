@@ -25,5 +25,8 @@ export const requestForPage = async page => {
   refs.filter.popularBtn.classList.add('btn-tab-active');
   showLoader();
 };
-
+let startPage = 1;
+if (document.title === 'Home') {
+  requestForPage(startPage);
+}
 refs.home.gallery?.addEventListener('DOMContentLoaded', requestForPage);

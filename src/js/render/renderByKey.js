@@ -39,6 +39,7 @@ export const requestForMovie = async page => {
   const { genres } = await getGenres();
   const fullInfo = dataCombine(movies, genres);
   renderMovie(fullInfo);
+  refs.filter.popularBtn.classList.remove('btn-tab-active');
   const currentPage = data.page;
   addToStorage('active-search', currentPage);
   showLoader();
@@ -63,7 +64,6 @@ const onSearch = e => {
   }
   let startPage = filmsParams.page;
   requestForMovie(startPage);
-
 };
 
 refs.home.formEl?.addEventListener('submit', onSearch);

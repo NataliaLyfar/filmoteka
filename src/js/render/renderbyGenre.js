@@ -42,7 +42,7 @@ const renderMovie = data =>
 filmsByGenreParams.page = page;
     const { ...data } = await getFilmsByGenre();
     const movies = data.results;
-    const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
+    const totalPages = data.total_pages;
     renderingPaginationMarkup(page, totalPages);
     const { genres } = await getGenres();
     const fullInfo = dataCombine(movies, genres);

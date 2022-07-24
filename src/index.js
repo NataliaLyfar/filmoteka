@@ -20,11 +20,8 @@ import {refs} from './js/refs/refs';
 import changeLang from './js/components/selectLang'
 
 
-let firstPage = 1;
 
-if (document.title === 'Home') {
-  requestForPage(firstPage);
-}
+
 if (document.title === 'My Library') {
   requestForWatched();
 }

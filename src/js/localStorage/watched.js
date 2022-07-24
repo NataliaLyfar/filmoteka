@@ -14,6 +14,8 @@ if (langStart === '') {
 }
 
 const dataCombine = movie => {
+
+ 
   return {
     ...movie,
     year: movie.release_date.slice(0, 4),
